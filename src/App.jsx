@@ -46,18 +46,18 @@ const ORIGINAL_QUESTIONS = [
   [40,"Маркетингийн хамгийн үндсэн зорилгын нэг аль вэ?",["Зөв хэрэглэгчид зөв санал хүргэх","Пост бүрийг viral болгох","Бүх platform дээр байх","Өдөр бүр discount хийх"],0],
 ].map(([id,question,options,correct])=>({id,question,options,correct,level:"core"}));
 
-const CHALLENGE_QUESTIONS = [
-  [41,"CTR өндөр байна гэдэг нь юуг илтгэх вэ?",["Зар дээр дарсан хүний хувь өндөр","Зарын үнэ заавал өндөр","Follower бүгд худалдан авсан","Reach буурсан"],0],
-  [42,"Retargeting сурталчилгаа хэнд чиглэдэг вэ?",["Брэндтэй өмнө нь харилцсан хүмүүст","Зөвхөн шинэ ажилтанд","Бүх хүнд ижилхэн","Зөвхөн competitor-т"],0],
-  [43,"Conversion rate-ийг хэрхэн тооцдог вэ?",["Conversion-ийг нийт visitor-т хувааж 100-аар үржүүлэх","Reach-ийг like-д хуваах","Follower-оос post хасах","Budget-ийг impression-д нэмэх"],0],
-  [44,"UTM параметрийн гол хэрэглээ юу вэ?",["Traffic аль campaign-аас ирснийг хэмжих","Логоны өнгө солих","Video шахах","Follower устгах"],0],
-  [45,"AIDA загварын зөв дараалал аль вэ?",["Attention, Interest, Desire, Action","Action, Interest, Data, Audience","Audience, Idea, Design, Ad","Attention, Image, Data, Action"],0],
-  [46,"CAC ямар зардлыг хэмждэг вэ?",["Нэг шинэ хэрэглэгч авах дундаж зардал","Нэг пост хийх хугацаа","Нийт follower-ийн үнэ","Сайтын сарын төлбөр"],0],
-  [47,"Lookalike audience гэж юу вэ?",["Одоогийн сайн хэрэглэгчидтэй төстэй шинэ хүмүүс","Брэндийн ажилчид","Ижил лого хэрэглэдэг компаниуд","Постыг хоёр удаа үзсэн хүн"],0],
-  [48,"Маркетингийн funnel-ийн consideration шатанд ямар контент илүү тохирох вэ?",["Харьцуулалт, тайлбар, кейс","Зөвхөн лого","Ажлын зар","Санамсаргүй meme"],0],
-  [49,"ROAS 4:1 гэдэг нь юу гэсэн үг вэ?",["Зарцуулсан 1₮ тутамд 4₮ орлого","4 хүн тутмын 1 нь follow хийсэн","Зар 4 өдөр явсан","Reach 4 дахин буурсан"],0],
-  [50,"Vanity metric-ийн жишээ аль вэ?",["Бизнесийн зорилготой холбоогүй like-ийн тоо","Борлуулалтын орлого","Conversion rate","Customer acquisition cost"],0],
-].map(([id,question,options,correct])=>({id,question,options,correct,level:"challenge"}));
+const HARD_QUESTIONS = [
+  [41,"CTR өссөн ч борлуулалт буурвал юуг түрүүлж шалгах вэ?",["Landing page","Логоны хэмжээ","Follower count","Hashtag"],0],
+  [42,"Reach ижил, frequency өссөн бол юу гэсэн үг вэ?",["Нэг хүмүүс дахин харсан","Шинэ хүмүүс нэмэгдсэн","Үнэ буурсан","Сэтгэгдэл өссөн"],0],
+  [43,"ROAS өндөр ч ашиг бага байж болох шалтгаан?",["Margin бага","Reach өндөр","CTR өндөр","Share олон"],0],
+  [44,"A/B тестэд яагаад нэг зүйл л өөрчилдөг вэ?",["Нөлөөлсөн шалтгааныг мэдэх","Төсөв хэмнэх","Reach өсгөх","Хугацаа сунгах"],0],
+  [45,"CAC нь LTV-ээс их бол юу ойлгох вэ?",["Өсөлт ашиггүй байж магадгүй","Контент viral болсон","Retention төгс","Reach хангалттай"],0],
+  [46,"Click их, bounce rate өндөр бол гол сэжиг юу вэ?",["Зар ба хуудас зөрсөн","Лого жижиг","Follower цөөн","Hashtag буруу"],0],
+  [47,"Retargeting-ээс худалдан авсан хүнийг яагаад хасах вэ?",["Илүү зардал гаргахгүй","CTR бууруулах","Reach нуух","Үнэ нэмэх"],0],
+  [48,"Аль нь vanity metric байж болох вэ?",["Зорилгогүй like","Цэвэр ашиг","Conversion","Давтан худалдан авалт"],0],
+  [49,"UTM ашиглах хамгийн чухал шалтгаан?",["Traffic-ийн эх үүсвэрийг мэдэх","Зургийг хурдлуулах","Лого солих","Comment нуух"],0],
+  [50,"Discount-аар conversion өсвөл дараа нь юуг шалгах вэ?",["Цэвэр ашиг","Follower count","Font size","Post length"],0],
+].map(([id,question,options,correct])=>({id,question,options,correct,level:"hard"}));
 
 const STORAGE_KEY = "zochil-marketing-quiz-results-v6";
 const HISTORY_KEY = "zochil-marketing-quiz-round-history-v6";
@@ -92,10 +92,10 @@ function buildRound() {
   const history = readRoundHistory().slice(0, 5);
   const recentlyUsed = new Set(history.flat());
   const availableCore = ORIGINAL_QUESTIONS.filter((question) => !recentlyUsed.has(question.id));
-  const availableChallenge = CHALLENGE_QUESTIONS.filter((question) => !recentlyUsed.has(question.id));
+  const availableHard = HARD_QUESTIONS.filter((question) => !recentlyUsed.has(question.id));
   const selected = shuffle([
     ...shuffle(availableCore.length >= 4 ? availableCore : ORIGINAL_QUESTIONS).slice(0, 4),
-    ...shuffle(availableChallenge.length ? availableChallenge : CHALLENGE_QUESTIONS).slice(0, 1),
+    ...shuffle(availableHard.length ? availableHard : HARD_QUESTIONS).slice(0, 1),
   ]);
   const correctPositions = shuffle([0, 1, 2, 3, Math.floor(Math.random() * 4)]);
   localStorage.setItem(HISTORY_KEY, JSON.stringify([selected.map((question) => question.id), ...history].slice(0, 5)));
@@ -215,7 +215,7 @@ export function App() {
 
     {screen === "home" && <section className="home content"><p className="eyebrow">ZOCHIL CONTENT QUIZ</p><h1>Маркетингийн<br/><span>мэдлэгээ</span> сориорой!</h1><p className="home-copy">50 асуултаас санамсаргүй 5 асуулт. Бүгдийг зөв хариулаад шагналаа аваарай.</p><button className="start-button" onClick={startQuiz}><span>Эхлэх</span><b>→</b></button><p className="home-note">5 асуулт · Ойролцоогоор 2 минут</p></section>}
 
-    {screen === "quiz" && current && <section className="quiz content"><div className="question-meta"><span>{current.level === "challenge" ? "ZOCHIL CHALLENGE" : "ZOCHIL QUIZ"}</span></div><h2>{current.question}</h2><div className="answers">{current.options.map((option, choice) => { const state = selected === null ? "" : choice === current.correct ? "correct" : choice === selected ? "wrong" : "muted"; return <button key={option} className={`answer ${COLORS[choice]} ${state}`} onClick={() => chooseAnswer(choice)} disabled={selected !== null}><span className="answer-letter">{String.fromCharCode(65 + choice)}</span><span>{option}</span></button>; })}</div></section>}
+    {screen === "quiz" && current && <section className="quiz content"><div className="question-meta"><span>{current.level === "hard" ? "ZOCHIL HARD" : "ZOCHIL QUIZ"}</span></div><h2>{current.question}</h2><div className="answers">{current.options.map((option, choice) => { const state = selected === null ? "" : choice === current.correct ? "correct" : choice === selected ? "wrong" : "muted"; return <button key={option} className={`answer ${COLORS[choice]} ${state}`} onClick={() => chooseAnswer(choice)} disabled={selected !== null}><span className="answer-letter">{String.fromCharCode(65 + choice)}</span><span>{option}</span></button>; })}</div></section>}
 
     {screen === "result" && <section className="result content">{score === 5 ? <><p className="eyebrow">ZOCHIL QUIZ · 5 / 5</p><h2>Ялагч<br/><span>боллоо!</span></h2><p>Баяр хүргэе! Энэ дэлгэцийг ажилтанд үзүүлээд шагналаа аваарай.</p><div className="prize-stamp">Шагналын эзэн</div></> : <><p className="eyebrow">ZOCHIL QUIZ</p><h2>Мундаг<br/><span>байлаа!</span></h2><div className="result-score">{score} / 5</div><p>Дараагийн удаа тавуулаа зөв хариулаарай.</p><button className="start-button compact" onClick={startQuiz}><span>Дахин тоглох</span><b>↻</b></button></>}<button className="text-button" onClick={goHome}>Нүүр рүү буцах</button></section>}
 

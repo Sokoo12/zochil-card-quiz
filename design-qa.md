@@ -29,7 +29,7 @@
 - Spacing and layout rhythm: no viewport overflow; the question and answers fit the tested landscape viewport with consistent gaps and touch targets.
 - Colors and visual tokens: ZOCHIL magenta and yellow remain primary, with cyan and warm cream as supporting accents. Contrast is strong across all four answer variants.
 - Image quality and asset fidelity: the exact supplied logo and a dedicated high-resolution minimalist marketing background are used. The logo area at top left remains clear of decorative background assets.
-- Copy and content: the original DOCX wording is preserved for questions 1–40. Questions 41–50 use Mongolian marketing terminology and one is guaranteed in each round.
+- Copy and content: the original DOCX wording is preserved for questions 1–40. Questions 41–50 are concise, thought-provoking hard questions, and exactly one is guaranteed in each round.
 
 **Comparison history**
 
@@ -40,7 +40,7 @@
 **Interaction verification**
 
 - Tested start, five sequential answer selections, correct/incorrect feedback, progress changes, the “Мундаг байлаа!” result, automatic round composition, and return flow.
-- A challenge question was visibly present in the tested five-question round.
+- A hard question was visibly present in the tested five-question round.
 - Six generated rounds were checked: every round used all four answer positions, and no question repeated within the previous five rounds.
 - Browser console was checked. The initial missing React import error was fixed; no new errors appeared after the correction.
 - Production build and Sites packaging tests passed.

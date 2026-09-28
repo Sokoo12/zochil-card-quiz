@@ -12,7 +12,7 @@ When implementing from a selected generated mock, treat that image as the source
 - Use the supplied ZOCHIL logo small at the top left and preserve it exactly.
 - Visual direction: youthful 2026 sticker-pop/zine marketing graphics, not a classroom quiz or 2010 UI.
 - Typography: Rubik Variable for Mongolian display text and Inter for functional text.
-- Quiz rounds contain exactly two easy, one medium, and two hard questions. The bank contains 40 easy questions, eight medium questions, and twelve hard questions (including ten newly added hard questions).
+- Quiz rounds contain four random questions from the original 40 plus one guaranteed question from the ten-question challenge bank.
 - Return an abandoned quiz to the home screen after two minutes of inactivity and persist completed results locally for reporting.
 - Keep the background restrained and minimalist, with the top-left logo area completely free of decorative imagery.
 - Randomize answer positions with balanced A/B/C/D placement in every five-question round.

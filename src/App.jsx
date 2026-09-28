@@ -46,34 +46,21 @@ const ORIGINAL_QUESTIONS = [
   [40,"Маркетингийн хамгийн үндсэн зорилгын нэг аль вэ?",["Зөв хэрэглэгчид зөв санал хүргэх","Пост бүрийг viral болгох","Бүх platform дээр байх","Өдөр бүр discount хийх"],0],
 ].map(([id,question,options,correct])=>({id,question,options,correct,level:"core"}));
 
-const MEDIUM_QUESTIONS = [
+const CHALLENGE_QUESTIONS = [
   [41,"CTR өндөр байна гэдэг нь юуг илтгэх вэ?",["Зар дээр дарсан хүний хувь өндөр","Зарын үнэ заавал өндөр","Follower бүгд худалдан авсан","Reach буурсан"],0],
   [42,"Retargeting сурталчилгаа хэнд чиглэдэг вэ?",["Брэндтэй өмнө нь харилцсан хүмүүст","Зөвхөн шинэ ажилтанд","Бүх хүнд ижилхэн","Зөвхөн competitor-т"],0],
+  [43,"Conversion rate-ийг хэрхэн тооцдог вэ?",["Conversion-ийг нийт visitor-т хувааж 100-аар үржүүлэх","Reach-ийг like-д хуваах","Follower-оос post хасах","Budget-ийг impression-д нэмэх"],0],
   [44,"UTM параметрийн гол хэрэглээ юу вэ?",["Traffic аль campaign-аас ирснийг хэмжих","Логоны өнгө солих","Video шахах","Follower устгах"],0],
   [45,"AIDA загварын зөв дараалал аль вэ?",["Attention, Interest, Desire, Action","Action, Interest, Data, Audience","Audience, Idea, Design, Ad","Attention, Image, Data, Action"],0],
   [46,"CAC ямар зардлыг хэмждэг вэ?",["Нэг шинэ хэрэглэгч авах дундаж зардал","Нэг пост хийх хугацаа","Нийт follower-ийн үнэ","Сайтын сарын төлбөр"],0],
   [47,"Lookalike audience гэж юу вэ?",["Одоогийн сайн хэрэглэгчидтэй төстэй шинэ хүмүүс","Брэндийн ажилчид","Ижил лого хэрэглэдэг компаниуд","Постыг хоёр удаа үзсэн хүн"],0],
   [48,"Маркетингийн funnel-ийн consideration шатанд ямар контент илүү тохирох вэ?",["Харьцуулалт, тайлбар, кейс","Зөвхөн лого","Ажлын зар","Санамсаргүй meme"],0],
-  [50,"Vanity metric-ийн жишээ аль вэ?",["Бизнесийн зорилготой холбоогүй like-ийн тоо","Борлуулалтын орлого","Conversion rate","Customer acquisition cost"],0],
-].map(([id,question,options,correct])=>({id,question,options,correct,level:"medium"}));
-
-const HARD_QUESTIONS = [
-  [43,"Conversion rate-ийг хэрхэн тооцдог вэ?",["Conversion-ийг нийт visitor-т хувааж 100-аар үржүүлэх","Reach-ийг like-д хуваах","Follower-оос post хасах","Budget-ийг impression-д нэмэх"],0],
   [49,"ROAS 4:1 гэдэг нь юу гэсэн үг вэ?",["Зарцуулсан 1₮ тутамд 4₮ орлого","4 хүн тутмын 1 нь follow хийсэн","Зар 4 өдөр явсан","Reach 4 дахин буурсан"],0],
-  [51,"Incrementality test-ийн гол зорилго юу вэ?",["Кампанит ажил байгаагүй бол гарахгүй байсан нэмэлт үр дүнг хэмжих","Нийт impression-ийг хоёр дахин өсгөх","Зөвхөн хамгийн сайн creative-ийг сонгох","Follower-ийн өсөлтийг өдөр бүр тоолох"],0],
-  [52,"LTV:CAC харьцаа 1:1 байвал хамгийн зөв дүгнэлт аль вэ?",["Хэрэглэгчээс олох үнэ цэнэ татах зардалтай ойролцоо тул өсөлт тогтворгүй байж болно","Campaign заавал ашигтай","Organic reach дөрөв дахин өссөн","Customer retention төгс байна"],0],
-  [53,"Last-click attribution-ийн гол сул тал юу вэ?",["Худалдан авалтад нөлөөлсөн өмнөх touchpoint-уудыг дутуу үнэлдэг","Conversion-ийг хоёр удаа бүртгэдэг","Зөвхөн offline борлуулалтыг хэмждэг","Зарын төсвийг автоматаар өсгөдөг"],0],
-  [54,"A/B тестийн statistical significance юуг илэрхийлдэг вэ?",["Илэрсэн ялгаа санамсаргүй тохиолдлоос үүсээгүй байх итгэлийн түвшинг","B хувилбар үргэлж ялагч болохыг","Тестийн төсөв хангалттайг","Audience хоёр дахин өссөнийг"],0],
-  [55,"Ad frequency өсөж, CTR зэрэг буурч байвал хамгийн магадлалтай шалтгаан юу вэ?",["Creative fatigue буюу хүмүүс зарыг хэт олон харсан","Tracking pixel хурдан ажилласан","Organic reach өссөн","Landing page-ийн үнэ буурсан"],0],
-  [56,"Brand lift study голчлон юуг хэмждэг вэ?",["Кампанит ажлын дараах awareness, consideration зэрэг хандлагын өөрчлөлтийг","Зөвхөн шууд борлуулалтыг","Website-ийн ачаалах хурдыг","Нэг постын үйлдвэрлэлийн зардлыг"],0],
-  [57,"Cohort analysis хийхийн давуу тал юу вэ?",["Ижил үед эсвэл ижил шинжээр орсон хэрэглэгчдийн зан төлөвийг хугацаагаар харьцуулах","Бүх хэрэглэгчийг нэг дундаж тоонд нэгтгэх","Logo test хийх","Зөвхөн follower count хэмжих"],0],
-  [58,"Marginal ROAS гэж юу вэ?",["Нэмэлт нэгж төсөв зарцуулахад бий болсон нэмэлт орлогын өгөөж","Нийт campaign-ийн lifetime reach","Organic болон paid follower-ийн харьцаа","Creative бүрийн impression"],0],
-  [59,"Campaign cannibalization гэж юуг хэлэх вэ?",["Шинэ кампанит ажил нэмэлт борлуулалт үүсгэхийн оронд одоо байсан сувгийн борлуулалтыг өөртөө шилжүүлэх","Хоёр creative ижил өнгөтэй байх","Audience өсөх","Competitor үнэ буулгах"],0],
-  [60,"Marketing Mix Modeling ямар үед хамгийн хэрэгтэй вэ?",["Олон сувгийн борлуулалтад оруулсан хувь нэмрийг агрегат өгөгдлөөр үнэлэх үед","Нэг caption-ийн үг үсгийг шалгах үед","Logo-ийн хэмжээг сонгох үед","Нэг хэрэглэгчийн comment-д хариулах үед"],0],
-].map(([id,question,options,correct])=>({id,question,options,correct,level:"hard"}));
+  [50,"Vanity metric-ийн жишээ аль вэ?",["Бизнесийн зорилготой холбоогүй like-ийн тоо","Борлуулалтын орлого","Conversion rate","Customer acquisition cost"],0],
+].map(([id,question,options,correct])=>({id,question,options,correct,level:"challenge"}));
 
-const STORAGE_KEY = "zochil-marketing-quiz-results-v5";
-const HISTORY_KEY = "zochil-marketing-quiz-round-history-v5";
+const STORAGE_KEY = "zochil-marketing-quiz-results-v6";
+const HISTORY_KEY = "zochil-marketing-quiz-round-history-v6";
 const INACTIVITY_MS = 120_000;
 const RESULT_MS = 20_000;
 const ADMIN_PIN = "1208";
@@ -104,13 +91,11 @@ function mixQuestionOptions(question, correctPosition) {
 function buildRound() {
   const history = readRoundHistory().slice(0, 5);
   const recentlyUsed = new Set(history.flat());
-  const availableEasy = ORIGINAL_QUESTIONS.filter((question) => !recentlyUsed.has(question.id));
-  const availableMedium = MEDIUM_QUESTIONS.filter((question) => !recentlyUsed.has(question.id));
-  const availableHard = HARD_QUESTIONS.filter((question) => !recentlyUsed.has(question.id));
+  const availableCore = ORIGINAL_QUESTIONS.filter((question) => !recentlyUsed.has(question.id));
+  const availableChallenge = CHALLENGE_QUESTIONS.filter((question) => !recentlyUsed.has(question.id));
   const selected = shuffle([
-    ...shuffle(availableEasy.length >= 2 ? availableEasy : ORIGINAL_QUESTIONS).slice(0, 2),
-    ...shuffle(availableMedium.length ? availableMedium : MEDIUM_QUESTIONS).slice(0, 1),
-    ...shuffle(availableHard.length >= 2 ? availableHard : HARD_QUESTIONS).slice(0, 2),
+    ...shuffle(availableCore.length >= 4 ? availableCore : ORIGINAL_QUESTIONS).slice(0, 4),
+    ...shuffle(availableChallenge.length ? availableChallenge : CHALLENGE_QUESTIONS).slice(0, 1),
   ]);
   const correctPositions = shuffle([0, 1, 2, 3, Math.floor(Math.random() * 4)]);
   localStorage.setItem(HISTORY_KEY, JSON.stringify([selected.map((question) => question.id), ...history].slice(0, 5)));
@@ -228,9 +213,9 @@ export function App() {
       {screen === "report" && <button className="small-button" onClick={goHome}>Нүүр</button>}
     </header>
 
-    {screen === "home" && <section className="home content"><p className="eyebrow">ZOCHIL CONTENT QUIZ</p><h1>Маркетингийн<br/><span>мэдлэгээ</span> сориорой!</h1><p className="home-copy">60 асуултаас санамсаргүй 5 асуулт. Бүгдийг зөв хариулаад шагналаа аваарай.</p><button className="start-button" onClick={startQuiz}><span>Эхлэх</span><b>→</b></button><p className="home-note">5 асуулт · Ойролцоогоор 2 минут</p></section>}
+    {screen === "home" && <section className="home content"><p className="eyebrow">ZOCHIL CONTENT QUIZ</p><h1>Маркетингийн<br/><span>мэдлэгээ</span> сориорой!</h1><p className="home-copy">50 асуултаас санамсаргүй 5 асуулт. Бүгдийг зөв хариулаад шагналаа аваарай.</p><button className="start-button" onClick={startQuiz}><span>Эхлэх</span><b>→</b></button><p className="home-note">5 асуулт · Ойролцоогоор 2 минут</p></section>}
 
-    {screen === "quiz" && current && <section className="quiz content"><div className="question-meta"><span>{current.level === "hard" ? "ZOCHIL HARD" : current.level === "medium" ? "ZOCHIL MEDIUM" : "ZOCHIL QUIZ"}</span></div><h2>{current.question}</h2><div className="answers">{current.options.map((option, choice) => { const state = selected === null ? "" : choice === current.correct ? "correct" : choice === selected ? "wrong" : "muted"; return <button key={option} className={`answer ${COLORS[choice]} ${state}`} onClick={() => chooseAnswer(choice)} disabled={selected !== null}><span className="answer-letter">{String.fromCharCode(65 + choice)}</span><span>{option}</span></button>; })}</div></section>}
+    {screen === "quiz" && current && <section className="quiz content"><div className="question-meta"><span>{current.level === "challenge" ? "ZOCHIL CHALLENGE" : "ZOCHIL QUIZ"}</span></div><h2>{current.question}</h2><div className="answers">{current.options.map((option, choice) => { const state = selected === null ? "" : choice === current.correct ? "correct" : choice === selected ? "wrong" : "muted"; return <button key={option} className={`answer ${COLORS[choice]} ${state}`} onClick={() => chooseAnswer(choice)} disabled={selected !== null}><span className="answer-letter">{String.fromCharCode(65 + choice)}</span><span>{option}</span></button>; })}</div></section>}
 
     {screen === "result" && <section className="result content">{score === 5 ? <><p className="eyebrow">ZOCHIL QUIZ · 5 / 5</p><h2>Ялагч<br/><span>боллоо!</span></h2><p>Баяр хүргэе! Энэ дэлгэцийг ажилтанд үзүүлээд шагналаа аваарай.</p><div className="prize-stamp">Шагналын эзэн</div></> : <><p className="eyebrow">ZOCHIL QUIZ</p><h2>Мундаг<br/><span>байлаа!</span></h2><div className="result-score">{score} / 5</div><p>Дараагийн удаа тавуулаа зөв хариулаарай.</p><button className="start-button compact" onClick={startQuiz}><span>Дахин тоглох</span><b>↻</b></button></>}<button className="text-button" onClick={goHome}>Нүүр рүү буцах</button></section>}
 
